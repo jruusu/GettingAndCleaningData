@@ -87,6 +87,34 @@ source("run_analysis.R")
     },
     function () {
       list(
+        test = "test set has keys: activity, subject_id",
+        expected = c("activity", "subject_id"),
+        observed = key(test_set)
+      )
+    },
+    function () {
+      list(
+        test = "training set has the same keys as test set",
+        expected = key(test_set),
+        observed = key(train_set)
+      )
+    },
+    function () {
+      list(
+        test = "merged set has the same keys as test set",
+        expected = key(test_set),
+        observed = key(merged_set)
+      )
+    },
+    function () {
+      list(
+        test = "selected set has the same keys as test set",
+        expected = key(test_set),
+        observed = key(selected_set)
+      )
+    },
+    function () {
+      list(
         test = "selected set should have 2 + 66 = 68 columns",
         expected = 68L,
         observed = ncol(selected_set)

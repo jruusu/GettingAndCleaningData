@@ -17,6 +17,8 @@ read_file <- function(filename) {
 # - activity labels; and
 # - subject identifiers
 #
+# The keys in the resultant data table are: activity, subject_id
+#
 read_set <- function(directory, set) {
   # Read the list of measurement labels corresponding to columns in the data set
   measurement_labels <- read.table(sprintf("%s/features.txt", directory))[,2]
@@ -37,12 +39,16 @@ read_set <- function(directory, set) {
     mutate(
       activity = activity_labels[activity_ids]$activity,
       subject_id = subject_ids
-    )
+    ) %>%
+    setkey(activity, subject_id)
 }
 
-# Returns the specified list of data sets, combined by rows into a single tbl_dt
+# Returns the specified list of data sets, combined by rows into a single tbl_dt,
+# retaining keys of the first data set in list
 merge_sets <- function(set_list) {
-  tbl_dt(rbindlist(set_list))
+  keys <- key(first(set_list))
+  tbl_dt(rbindlist(set_list)) %>%
+    setkeyv(keys)
 }
 
 # 2 Extracts only the measurements on the mean and standard deviation for each measurement,
@@ -53,7 +59,6 @@ select_columns <- function (set) {
     grep("activity|subject_id|((mean|std)\\(\\))", names(set))
   )
 }
-
 
 # 3 Uses descriptive activity names to name the activities in the data set
 # 4 Appropriately labels the data set with descriptive variable names. 
