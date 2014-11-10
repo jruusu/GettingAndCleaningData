@@ -26,6 +26,7 @@ source("run_analysis.R")
   train_set <- read_set(datadir, "train")
   merged_set <- merge_sets(list(train_set, test_set))
   selected_set <- select_columns(merged_set)
+  average_set <- get_averages(selected_set)
   
   # Define tests
   tests <- c(
@@ -118,6 +119,20 @@ source("run_analysis.R")
         test = "selected set should have 2 + 66 = 68 columns",
         expected = 68L,
         observed = ncol(selected_set)
+      )
+    },
+    function () {
+      list(
+        test = "set of averages should have the same number of columns as selected set",
+        expected = ncol(selected_set),
+        observed = ncol(average_set)
+      )
+    },
+    function () {
+      list(
+        test = "nrows in the set of averages should match number of distinct activity, subject_id combinations in the merged set",
+        expected = nrow(unique(select(selected_set, activity, subject_id))),
+        observed = nrow(average_set)
       )
     }
   )
