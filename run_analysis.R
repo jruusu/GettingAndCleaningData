@@ -1,6 +1,15 @@
+#
+# LIBRARIES
+#
 library(data.table)
 library(dplyr)
 
+#
+# FUNCTIONS
+#
+
+#
+# read_set
 #
 # Returns the specified data set ("test" or "train") from the specified directory
 # as a single data table containing
@@ -31,11 +40,17 @@ read_set <- function(directory, set) {
     )
 }
 
+#
+# merge_sets
+#
 # Returns the specified list of data sets, combined by rows into a single tbl_dt.
 merge_sets <- function(set_list) {
   tbl_dt(rbindlist(set_list))
 }
 
+#
+# select_columns
+#
 # Selects the columns containing the mean and standard deviation for each measurement,
 # while retaining the two key columns, activity and subject_id.
 select_columns <- function (set) {
@@ -45,6 +60,9 @@ select_columns <- function (set) {
   )
 }
 
+#
+# get_averages
+#
 # Returns the average for each variable in the specified set, grouped by the key columns, activity and subject_id
 get_averages <- function (set) {
   set %>%
@@ -52,9 +70,25 @@ get_averages <- function (set) {
     summarise_each(funs(mean))
 }
 
-# You should create one R script called run_analysis.R that does the following.
-# 1 Merges the training and the test sets to create one data set.
-# 2 Extracts only the measurements on the mean and standard deviation for each measurement.
-# 3 Uses descriptive activity names to name the activities in the data set
-# 4 Appropriately labels the data set with descriptive variable names.
-# 5 From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
+# 
+# EXECUTION
+#
+
+# From the specified data directory..
+datadir <- "UCI HAR Dataset"
+
+# 1) Get the two data sets with descriptive column names and activity labels applied
+test_set <- read_set(datadir, "test")
+train_set <- read_set(datadir, "train")
+
+# 2) Merge the training and the test sets to create one data set
+merged_set <- merge_sets(list(train_set, test_set))
+
+# 3) Extract only the measurements on the mean and standard deviation for each measurement
+selected_set <- select_columns(merged_set)
+
+# 4) Create another data set with the average of each variable for each activity and each subject.
+average_set <- get_averages(selected_set)
+
+# 5) Write the average data set into a txt file
+write.table(average_set, file = "averages.txt", row.names = FALSE)
