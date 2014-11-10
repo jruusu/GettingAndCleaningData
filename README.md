@@ -3,8 +3,8 @@ The goal is to prepare tidy data that can be used for later analysis.
 
 ## Prerequisites
 ### R Libraries
-* data.table
-* plyr
+* data.table v1.9.4
+* dplyr v0.3.0.2
 
 ### Source data set
 * Download the [source data set]
@@ -22,8 +22,10 @@ Full description of the source data is provided with the source data set, includ
 4. Writes the resultant data set into a txt file, `averages.txt`
 
 
-## The resultant data
-Each record in the resultant data set (`averages.txt`) represents a summary (average value) of measurements from a specific activity performed by a specific test subject. Each record contains:
+## The resultant data ('Code Book')
+The first row of `averages.txt` is a header with column names.
+
+Each record in the resultant data set represents a summary (average values) of measurements from a specific activity performed by a specific test subject. Each record contains:
 
 An activity label (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING).
 
