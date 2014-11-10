@@ -25,6 +25,7 @@ source("run_analysis.R")
   test_set <- read_set(datadir, "test")
   train_set <- read_set(datadir, "train")
   merged_set <- merge_sets(list(train_set, test_set))
+  selected_set <- select_columns(merged_set)
   
   # Define tests
   tests <- c(
@@ -82,6 +83,13 @@ source("run_analysis.R")
         test = "merged set and test set have identical column names",
         expected = names(test_set),
         observed = names(merged_set)
+      )
+    },
+    function () {
+      list(
+        test = "selected set should have 2 + 66 = 68 columns",
+        expected = 68L,
+        observed = ncol(selected_set)
       )
     }
   )
