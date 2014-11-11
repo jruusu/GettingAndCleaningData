@@ -11,7 +11,7 @@ The goal is to prepare tidy data that can be used for later analysis.
 * Unzip the package contents into this directory, resulting in a subdirectory called `UCI HAR Dataset`
 
 ## The Source data
-The [source data set] (_Human Activity Recognition Using Smartphones Dataset_) contains sensor signals (accelerometer and gyroscope) obtained from experiments where 30 volunteers performed six different activities wearing a smartphone on the waist.
+The [source data set] (_Human Activity Recognition Using Smartphones Dataset_) contains accelerometer and gyroscope sensor signals collected from experiments where 30 volunteers performed six different activities while wearing a smartphone on the waist.
 
 Full description of the source data is provided with the source data set, including details on feature selection and calculation in `features_info.txt`.
 
