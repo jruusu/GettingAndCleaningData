@@ -23,11 +23,13 @@ Full description of the source data is provided with the source data set, includ
 
 
 ## The resultant data ('Code Book')
-The first row of `averages.txt` is a header with column names.
+The first row of `averages.txt` is a header with column names. Each subsequent row contains one record of space-separated values.
 
-Each record in the resultant data set represents a summary (average values) of measurements from a specific activity performed by a specific test subject. Each record contains:
+Each record in the resultant data set represents a summary (average values) of measurements from a specific activity performed by a specific test subject. For example, the average measurements from test subject 1 walking is one record (row) in the file.
 
-An activity label (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING).
+Each record contains:
+
+An activity label string (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING).
 
 A numeric subject id (1-30).
 
