@@ -7,7 +7,7 @@ The goal is to prepare tidy data that can be used for later analysis.
 * dplyr v0.3.0.2
 
 ### Source data set
-* Download the [source data set]
+* Download the [source data set]; _Human Activity Recognition Using Smartphones Dataset_, Version 1.0
 * Unzip the package contents into this directory, resulting in a subdirectory called `UCI HAR Dataset`
 
 ## The source data
