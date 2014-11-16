@@ -43,7 +43,7 @@ Average standard deviation (_std_) and mean (_mean_) for the following 3-axial (
 - tBodyGyroJerk
 - tGravityAcc
 
-Average standard deviation (_std_) and mean (_mean_) for the following gyroscope (_Gyro_) and accelerometer (_Acc_) magnitude features in the frequency (_f_) and time (_t_) domains:
+Average standard deviation (_std_) and mean (_mean_) for the following gyroscope (_Gyro_) and accelerometer (_Acc_) magnitude (_Mag_) features in the frequency (_f_) and time (_t_) domains:
 - fBodyAccMag
 - fBodyBodyAccJerkMag
 - fBodyBodyGyroJerkMag
